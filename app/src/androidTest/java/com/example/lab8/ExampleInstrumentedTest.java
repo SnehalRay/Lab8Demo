@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -23,4 +25,35 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.example.lab8", appContext.getPackageName());
     }
+
+
+
+    private CustomList list;
+    /**
+     * create a mocklist for my citylist
+     * @return
+     */
+    public CustomList MockCityList(){
+        list = new CustomList(null,new ArrayList<>());
+        return list;
+    }
+
+    /**
+     * get the size of the list
+     * increase the list by adding a new city
+     * check if our current size matches the initial size
+     plus one
+     */
+    @Test
+    public void addCityTest(){
+        list = MockCityList();
+        int listSize = list.getCount();
+        list.addCity(new City("Estevan", "SK"));
+        assertEquals(list.getCount(),listSize + 1);
+    }
+
+
+
+
+
 }
